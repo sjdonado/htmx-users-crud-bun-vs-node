@@ -30,6 +30,10 @@ describe('OffersService', () => {
     repository = module.get(getRepositoryToken(Offer));
   });
 
+  beforeEach(async () => {
+    jest.clearAllMocks();
+  });
+
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
