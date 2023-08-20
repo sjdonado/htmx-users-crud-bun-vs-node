@@ -6,7 +6,7 @@ import { Offer } from './entities/offer.entity';
 import { OfferValidationPipe } from './pipes/offer-validation.pipe';
 
 @Injectable()
-export class OfferService {
+export class OffersService {
   constructor(
     @InjectRepository(Offer)
     private readonly offerRepository: Repository<Offer>,
@@ -25,6 +25,8 @@ export class OfferService {
       this.offerRepository.create(data as unknown as Offer),
     );
 
-    await this.offerRepository.insert(offersToInsert);
+    const result = await this.offerRepository.insert(offersToInsert);
+
+    return result;
   }
 }

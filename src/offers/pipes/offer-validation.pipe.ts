@@ -12,7 +12,7 @@ export class OfferValidationPipe implements PipeTransform<any> {
 
   constructor() {}
 
-  async transform(value: any): Promise<OfferDTO | undefined> {
+  async transform(value: any): Promise<OfferDTO[] | undefined> {
     const validatedData = await this.validateKeysRecursively(value);
 
     if (!validatedData) {
