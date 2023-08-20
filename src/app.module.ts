@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { EntityManager } from 'typeorm';
 
 import { AppController } from './app.controller';
+import { OffersModule } from './offers/offers.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { AppController } from './app.controller';
       }),
       inject: [ConfigService],
     }),
+    OffersModule,
   ],
   controllers: [AppController],
   providers: [],
