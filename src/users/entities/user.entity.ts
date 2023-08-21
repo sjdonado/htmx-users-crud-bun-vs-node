@@ -16,7 +16,7 @@ export class User {
 
   @Column({
     name: 'created_at',
-    type: 'datetime', // Use 'datetime' instead of 'timestamp'
+    type: 'datetime',
     default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
