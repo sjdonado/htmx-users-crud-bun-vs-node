@@ -1,17 +1,20 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+
 import { Repository } from 'typeorm';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 import { User } from './entities/user.entity';
+import { EmailWhiteListValidator } from './validators/email-whitelist.validator';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
+    private readonly emailValidator: EmailWhiteListValidator,
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
@@ -50,5 +53,19 @@ export class UsersService {
     const user = await this.findOne(id);
 
     await this.userRepository.remove(user);
+  }
+
+  async validateEmail(email: string): Promise<string | undefined> {
+    const isValid = this.emailValidator.validate(email);
+
+    if (!isValid) {
+      return this.emailValidator.defaultMessage();
+    }
+
+    const user = await this.userRepository.findOne({ where: { email } });
+
+    if (user !== null) {
+      return 'Email is already in use.';
+    }
   }
 }

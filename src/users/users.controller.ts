@@ -15,9 +15,10 @@ import {
 
 import { Response } from 'express';
 
-import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+
+import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
@@ -53,6 +54,14 @@ export class UsersController {
   async cancelEditRow(@Param('id') id: string) {
     const user = await this.usersService.findOne(+id);
     return { user };
+  }
+
+  @Post('validation/email')
+  @Render('partials/_email-inline-validation')
+  async emailValidation(@Body() { email }: { email: string }) {
+    const errorMessage = await this.usersService.validateEmail(email);
+
+    return { email, errorMessage };
   }
 
   @Post()
