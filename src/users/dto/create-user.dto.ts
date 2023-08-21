@@ -10,6 +10,6 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @IsString()
-  @Matches(/^[0-9!@#$%^&*()_+{}\[\]:;<>,.?~=-]+$/)
+  @Matches(/^[ABCabc0-9!@#$%^&*()_+{}\[\]:;<>,.?~=-]+$/)
   hash: string;
 }

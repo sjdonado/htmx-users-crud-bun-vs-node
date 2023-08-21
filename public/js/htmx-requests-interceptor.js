@@ -1,21 +1,20 @@
-const snackbar = document.createElement('div');
-snackbar.id = 'snackbar';
-snackbar.className =
-  'hidden bg-gray-500 text-white px-4 py-2 rounded shadow-md fixed bottom-4 right-4 transition duration-300';
-document.body.appendChild(snackbar);
+function showInterceptorSnackbar(message) {
+  const interceptorNavbar = document.createElement('div');
+  interceptorNavbar.id = 'htmx-requests-interceptor-interceptorNavbar';
+  interceptorNavbar.className =
+    'hidden bg-gray-500 text-white px-4 py-2 rounded shadow-md fixed bottom-4 right-4 transition duration-300';
+  interceptorNavbar.textContent = message;
+  interceptorNavbar.classList.remove('hidden');
 
-function showSnackbar(message) {
-  snackbar.textContent = message;
-  snackbar.classList.remove('hidden');
+  document.body.appendChild(interceptorNavbar);
 
   setTimeout(function () {
-    snackbar.classList.add('hidden');
-  }, 3000); // Hide the snackbar after 3 seconds
+    interceptorNavbar.classList.add('hidden');
+  }, 3000); // Hide the interceptorNavbar after 3 seconds
 }
 
 document.addEventListener('htmx:beforeRequest', function (event) {
   event.detail.requestStart = new Date().getTime();
-  console.log(event);
   event.detail.requestMethod = event.detail.method;
 });
 
@@ -30,5 +29,5 @@ document.addEventListener('htmx:afterOnLoad', function (event) {
 
   const message = `${url} [${status}] completed in ${requestDuration}ms.`;
 
-  showSnackbar(message);
+  showInterceptorSnackbar(message);
 });
