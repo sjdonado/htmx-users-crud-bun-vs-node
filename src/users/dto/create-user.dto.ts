@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, Validate } from 'class-validator';
+import { IsNotEmpty, IsString, Matches, Validate } from 'class-validator';
 
 import { EmailWhiteListValidator } from '../validators/email-whitelist.validator';
 
@@ -10,5 +10,6 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   @IsString()
+  @Matches(/^[0-9!@#$%^&*()_+{}\[\]:;<>,.?~=-]+$/)
   hash: string;
 }

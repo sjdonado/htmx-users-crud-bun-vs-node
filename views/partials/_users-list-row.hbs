@@ -1,8 +1,14 @@
 <div id='users-list-row-{{user.id}}' class='border flex py-2'>
-  <span class='w-1/5 px-4'>{{user.email}}</span>
-  <span class='w-1/5 px-4'>{{user.hash}}</span>
-  <span class='w-1/5 px-4'>{{user.counter}}</span>
-  <span class='w-1/5 px-4'>{{formatDatetime user.createdAt}}</span>
+  <span class='w-1/5 px-4 truncate' title='{{user.email}}'>{{user.email}}</span>
+  <span class='w-1/5 px-4 truncate' title='{{user.hash}}'>{{user.hash}}</span>
+  <span
+    class='w-1/5 px-4 truncate'
+    title='{{user.counter}}'
+  >{{user.counter}}</span>
+  <span
+    class='w-1/5 px-4 truncate'
+    title='{{formatDatetime user.createdAt}}'
+  >{{formatDatetime user.createdAt}}</span>
   <div class='flex space-x-4 px-4 py-2'>
     <button
       class='text-blue-500 hover:text-blue-700 underline'

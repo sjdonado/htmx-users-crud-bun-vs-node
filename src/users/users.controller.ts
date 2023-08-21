@@ -67,6 +67,7 @@ export class UsersController {
   @Post()
   @HttpCode(201)
   @Render('partials/_users-list-row')
+  @Header('HX-Trigger', 'close-create-user-modal')
   async create(@Body() createUserDto: CreateUserDto) {
     const user = await this.usersService.create(createUserDto);
     this.logger.log(`Created user: ${JSON.stringify(user)}`);
