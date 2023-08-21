@@ -1,0 +1,27 @@
+<div class='mx-24 bg-white p-6 rounded shadow overflow-x-auto'>
+  <h1 class='text-xl font-semibold mb-4'>Users</h1>
+  <div class='border border-gray-300 divide-y divide-gray-300'>
+    <div class='flex py-2 font-semibold'>
+      <span class='w-1/5 px-4'>Email</span>
+      <span class='w-1/5 px-4'>Hash</span>
+      <span class='w-1/5 px-4'>Counter</span>
+      <span class='w-1/5 px-4'>Created at</span>
+      <span class='w-1/5 px-4'>Actions</span>
+    </div>
+    <div id='users-list'>
+      {{#each users}}
+        {{> _users-list-row user=this}}
+      {{/each}}
+    </div>
+  </div>
+  <button
+    class='text-blue-500 hover:text-blue-700 underline mt-4'
+    hx-get='/users/views/create'
+    hx-trigger='click'
+    hx-target='body'
+    hx-swap='beforeend'
+  >
+    New User
+  </button>
+</div>
+

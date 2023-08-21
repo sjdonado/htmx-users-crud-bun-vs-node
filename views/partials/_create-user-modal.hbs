@@ -1,0 +1,53 @@
+<div
+  id='create-user-modal'
+  class='modal absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50'
+>
+  <div class='modal-content mx-24 bg-white p-6 rounded shadow'>
+    <button hx-on:click='htmx.find("#create-user-modal").remove()'>&times;</button>
+    <h2 class='text-xl font-semibold mb-4'>Create User</h2>
+    <form 
+      hx-post='/users'
+      hx-target='#users-list'
+      hx-swap='afterbegin'
+      hx-on:htmx:after-request='htmx.find("#create-user-modal").remove()'
+    >
+      <div class='mb-4'>
+        <label
+          class='block text-gray-700 text-sm font-bold mb-2'
+          for='email'
+        >Email:</label>
+        <input
+          class='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+          id='email'
+          name='email'
+          type='email'
+          placeholder='Email'
+          value="{{user.email}}"
+          required
+        />
+      </div>
+      <div class='mb-4'>
+        <label
+          class='block text-gray-700 text-sm font-bold mb-2'
+          for='hash'
+        >Hash:</label>
+        <input
+          class='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+          id='hash'
+          name='hash'
+          type='text'
+          placeholder='DIND0r&wn*neec+9'
+          value="{{user.hash}}"
+          required
+        />
+      </div>
+        <button
+          class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+          type='submit'
+        >
+          Create
+      </div>
+    </form>
+  </div>
+</div>
+

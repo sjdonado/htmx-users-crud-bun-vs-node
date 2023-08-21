@@ -1,0 +1,49 @@
+<div id='users-list-row-{{user.id}}' class='border flex py-2'>
+  <form
+    class='flex'
+    hx-patch='/users/{{user.id}}'
+    hx-target='#users-list-row-{{user.id}}'
+  >
+    <span class='w-1/4 px-4'>
+      <input
+        class='border border-blue-500 w-full'
+        type='text'
+        name='email'
+        value='{{user.email}}'
+        required
+      />
+    </span>
+    <span class='w-1/4 px-4'>
+      <input
+        class='border border-blue-500 w-full'
+        type='text'
+        name='hash'
+        value='{{user.hash}}'
+        required
+      />
+    </span>
+    <span class='w-1/4 px-4'>
+      <input
+        class='border border-blue-500 w-full'
+        type='number'
+        name='counter'
+        value='{{user.counter}}'
+        required
+      />
+    </span>
+    <span class='w-1/4 px-4'>{{formatDatetime user.createdAt}}</span>
+
+    <div class='flex space-x-4 px-4 py-2'>
+      <button type='submit' class='text-blue-500 hover:text-blue-700 underline'>
+        Save
+      </button>
+      <button
+        class='text-blue-500 hover:text-blue-700 underline'
+        hx-get='/users/views/edit/cancel/{{user.id}}'
+        hx-target='#users-list-row-{{user.id}}'
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

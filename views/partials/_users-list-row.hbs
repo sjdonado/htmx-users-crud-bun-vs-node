@@ -1,0 +1,23 @@
+<div id='users-list-row-{{user.id}}' class='border flex py-2'>
+  <span class='w-1/5 px-4'>{{user.email}}</span>
+  <span class='w-1/5 px-4'>{{user.hash}}</span>
+  <span class='w-1/5 px-4'>{{user.counter}}</span>
+  <span class='w-1/5 px-4'>{{formatDatetime user.createdAt}}</span>
+  <div class='flex space-x-4 px-4 py-2'>
+    <button
+      class='text-blue-500 hover:text-blue-700 underline'
+      hx-get='/users/views/edit/{{user.id}}'
+      hx-trigger='click'
+      hx-target='#users-list-row-{{user.id}}'
+    >
+      Edit
+    </button>
+    <button
+      class='text-blue-500 hover:text-blue-700 underline'
+      hx-delete='/users/{{user.id}}'
+      hx-confirm='Are you sure you want to delete this user?'
+    >
+      Delete
+    </button>
+  </div>
+</div>
