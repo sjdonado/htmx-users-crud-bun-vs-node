@@ -14,9 +14,26 @@ export function setViewEngine(app: NestExpressApplication) {
     'hbs',
     engine({
       extname: 'hbs',
-      defaultLayout: 'main',
+      defaultLayout: false,
       layoutsDir: join(basePath, 'views/layouts'),
       partialsDir: join(basePath, 'views/partials'),
+      helpers: {
+        formatDatetime(date: Date) {
+          const formattedDate = new Intl.DateTimeFormat('en-US', {
+            weekday: 'long', // 'Monday'
+            year: 'numeric', // '2023'
+            month: 'long', // 'August'
+            day: 'numeric', // '21'
+            hour: 'numeric', // '11'
+            minute: 'numeric', // '30'
+          }).format(date);
+
+          return formattedDate;
+        },
+        formatDateTimeToDatePicker(date: Date) {
+          return date.toISOString().slice(0, 16);
+        },
+      },
     }),
   );
 
