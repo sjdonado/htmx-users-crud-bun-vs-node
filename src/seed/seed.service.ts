@@ -24,6 +24,10 @@ export class SeedService {
     await this.userRepository.save(usersToSeed);
   }
 
+  async deleteAllUsers() {
+    await this.userRepository.clear();
+  }
+
   private generateRandomHash(): string {
     const characters = 'ABCabc0123456789!@#$%^&*()_+{}[]:;<>,.?~=-';
     const length = 10;
