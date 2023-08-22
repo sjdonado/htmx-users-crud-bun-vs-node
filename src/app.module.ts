@@ -1,6 +1,6 @@
 import { Logger, Module, OnModuleInit } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { EntityManager } from 'typeorm';
 
@@ -14,12 +14,13 @@ import { SeedModule } from './seed/seed.module';
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'sqlite',
-        database: configService.get('DATABASE_PATH'),
-        autoLoadEntities: true,
-        synchronize: true,
-      }),
+      useFactory: (configService: ConfigService) =>
+        ({
+          type: configService.get('DATABASE_TYPE'),
+          database: configService.get('DATABASE_PATH'),
+          autoLoadEntities: true,
+          synchronize: true,
+        }) as TypeOrmModuleOptions,
       inject: [ConfigService],
     }),
     UsersModule,
