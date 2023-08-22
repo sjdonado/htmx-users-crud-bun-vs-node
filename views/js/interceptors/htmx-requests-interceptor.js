@@ -1,16 +1,18 @@
 function showInterceptorSnackbar(message) {
-  const interceptorNavbar = document.createElement('div');
-  interceptorNavbar.id = 'htmx-requests-interceptor-interceptorNavbar';
-  interceptorNavbar.className =
-    'hidden bg-gray-500 text-white px-4 py-2 rounded shadow-md fixed bottom-4 right-4 transition duration-300';
-  interceptorNavbar.textContent = message;
-  interceptorNavbar.classList.remove('hidden');
+  const snackbar = document.createElement('div');
 
-  document.body.appendChild(interceptorNavbar);
+  snackbar.id = 'htmx-requests-interceptor-snackbar';
+  snackbar.className =
+    'hidden bg-gray-500 text-white px-4 py-2 rounded shadow-md fixed bottom-4 right-4 transition duration-300';
+  snackbar.textContent = message;
+  snackbar.classList.remove('hidden');
+
+  document.body.appendChild(snackbar);
 
   setTimeout(function () {
-    interceptorNavbar.classList.add('hidden');
-  }, 3000); // Hide the interceptorNavbar after 3 seconds
+    snackbar.classList.add('hidden');
+    snackbar.remove();
+  }, 3000);
 }
 
 document.addEventListener('htmx:beforeRequest', function (event) {

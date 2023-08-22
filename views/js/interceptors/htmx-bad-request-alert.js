@@ -1,5 +1,6 @@
 function showBadRequestSnackbar(message) {
   const snackbar = document.createElement('div');
+
   snackbar.id = 'htmx-requests-interceptor-snackbar';
   snackbar.className =
     'bg-red-500 text-white px-4 py-2 rounded shadow-md fixed bottom-4 right-4 transition flex items-center';

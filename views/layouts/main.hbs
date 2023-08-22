@@ -7,11 +7,14 @@
     <script src='https://unpkg.com/htmx.org@1.9.4'></script>
     <meta name='htmx-config' content='{"defaultSwapStyle":"outerHTML"}' />
 
-    <script src='https://cdn.tailwindcss.com'></script>
+    <link
+      href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css'
+      rel='stylesheet'
+    />
+
+    <script src='/assets/bundle.js'></script>
   </head>
   <body class='bg-gray-100 p-4' hx-boost='true'>
     {{{body}}}
-    <script src='js/htmx-requests-interceptor.js'></script>
-    <script src='js/htmx-bad-request-alert.js'></script>
   </body>
 </html>
