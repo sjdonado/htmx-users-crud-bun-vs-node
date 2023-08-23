@@ -20,7 +20,8 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) =>
         ({
-          type: configService.get('DATABASE_TYPE'),
+          type:
+            configService.get('NODE_ENV') === 'production' ? 'better-sqlite3' : 'sqlite',
           database: configService.get('DATABASE_PATH'),
           autoLoadEntities: true,
           synchronize: true,

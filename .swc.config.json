@@ -12,5 +12,5 @@
       "decoratorMetadata": true
     }
   },
-  "minify": false
+  "minify": true
 }
