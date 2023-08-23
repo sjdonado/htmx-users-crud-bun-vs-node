@@ -5,6 +5,7 @@
     <title>Users CRUD with htmx demo app</title>
 
     <script src='https://unpkg.com/htmx.org@1.9.4'></script>
+    <script src='https://unpkg.com/htmx.org/dist/ext/preload.js'></script>
     <meta name='htmx-config' content='{"defaultSwapStyle":"outerHTML"}' />
 
     <link
@@ -14,7 +15,7 @@
 
     <script src='/assets/bundle.js'></script>
   </head>
-  <body class='bg-gray-100 p-4' hx-boost='true'>
+  <body class='bg-gray-100 p-4' hx-boost='true' hx-ext='preload'>
     {{{body}}}
   </body>
 </html>
