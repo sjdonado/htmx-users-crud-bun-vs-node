@@ -34,7 +34,7 @@ export function setViewEngine(app: NestExpressApplication) {
           return date.toISOString().slice(0, 16);
         },
       },
-    }),
+    })
   );
 
   app.setViewEngine('hbs');

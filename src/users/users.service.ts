@@ -14,7 +14,7 @@ export class UsersService {
   constructor(
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
-    private readonly emailValidator: EmailWhiteListValidator,
+    private readonly emailValidator: EmailWhiteListValidator
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {

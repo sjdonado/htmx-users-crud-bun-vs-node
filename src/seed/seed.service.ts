@@ -9,7 +9,7 @@ import { User } from '@src/users/entities/user.entity';
 export class SeedService {
   constructor(
     @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
+    private readonly userRepository: Repository<User>
   ) {}
 
   async seedDatabaseWithUsers(count: number) {
@@ -33,9 +33,7 @@ export class SeedService {
     const length = 10;
     let randomHash = '';
     for (let i = 0; i < length; i++) {
-      randomHash += characters.charAt(
-        Math.floor(Math.random() * characters.length),
-      );
+      randomHash += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return randomHash;
   }
