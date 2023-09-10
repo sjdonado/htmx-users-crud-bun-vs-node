@@ -2,7 +2,7 @@ import MainLayout from '../layouts/main';
 
 import { User } from '~/model/schema/user';
 
-import UserListRow from '../components/users-list-row';
+import UsersListRow from '../components/users-list-row';
 
 const Users = (props: { users: User[] }) => (
   <MainLayout>
@@ -28,7 +28,7 @@ const Users = (props: { users: User[] }) => (
         </div>
         <div id="users-list">
           {props.users.map(user => (
-            <UserListRow user={user} />
+            <UsersListRow user={user} />
           ))}
         </div>
       </div>

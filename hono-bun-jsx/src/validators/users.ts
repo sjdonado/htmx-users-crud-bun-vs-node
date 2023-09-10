@@ -8,4 +8,5 @@ export const userEmailValidator = z
 export const userPayloadValidator = z.object({
   email: userEmailValidator,
   hash: z.string(),
+  counter: z.string().transform(c => Number(c)),
 });
