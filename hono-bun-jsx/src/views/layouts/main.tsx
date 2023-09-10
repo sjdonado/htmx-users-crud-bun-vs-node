@@ -4,10 +4,23 @@ const MainLayout = (props: { children: HtmlEscapedString }) => {
   return (
     <html>
       <head>
-        <title>Hono HTMX</title>
-        <meta name="description" content="Hono HTMX demo app" />
+        <meta charset="utf-8" />
+
+        <title>Users CRUD with htmx demo app</title>
+
+        <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+        <script src="https://unpkg.com/htmx.org/dist/ext/preload.js"></script>
+        <meta name="htmx-config" content='{"defaultSwapStyle":"outerHTML"}' />
+
+        <link
+          href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+          rel="stylesheet"
+        />
       </head>
-      <body>{props.children}</body>
+      <body class="bg-gray-100 p-4" hx-boost="true" hx-ext="preload">
+        <body>{props.children}</body>
+        <script src="/public/interceptors/htmx-requests-interceptor.js"></script>
+      </body>
     </html>
   );
 };

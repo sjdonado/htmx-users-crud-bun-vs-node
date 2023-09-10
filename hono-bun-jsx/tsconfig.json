@@ -4,6 +4,10 @@
     "strict": true,
     "jsx": "react-jsx",
     "jsxFragmentFactory": "Fragment",
-    "jsxImportSource": "hono/jsx"
+    "jsxImportSource": "hono/jsx",
+    "exclude": ["node_modules"],
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   }
 }

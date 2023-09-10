@@ -7,14 +7,22 @@
     "build": "bun build --target=bun --outdir=dist src/index.ts",
     "start": "bun dist/index.js",
     "dev": "bun run --hot src/index.ts",
-    "debug": "bun run --inspect=localhost:3001 src/index.ts"
+    "debug": "bun run --inspect=localhost:3001 src/index.ts",
+    "db:migration:generate": "drizzle-kit generate:sqlite --schema=./src/model/schema --out=./db/migrations"
   },
   "dependencies": {
-    "hono": "^3.5.4"
+    "@hono/zod-validator": "^0.1.8",
+    "drizzle-orm": "^0.28.6",
+    "hono": "^3.5.4",
+    "pino": "^8.15.1",
+    "pino-pretty": "^10.2.0",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
+    "@types/pino": "^7.0.5",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "bun-types": "^0.6.2",
+    "drizzle-kit": "^0.19.13",
     "eslint": "^8.49.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",

@@ -1,17 +1,22 @@
-import { Hono } from 'hono';
+import { Context, Hono } from 'hono';
 
-import { logger } from 'hono/logger';
-import { compress } from 'hono/compress';
+import { serveStatic } from 'hono/bun';
 
-import homeRouter from './routes/home';
+import { logger as honoLogger } from 'hono/logger';
+
+import usersRouter from './routes/users';
+import logger from './utils/logger';
 
 const app = new Hono();
 
-app.use('*', logger());
-app.use('*', compress());
+app.use(
+  '*',
+  honoLogger(str => logger.info(str))
+);
 
-app.route('/', homeRouter);
+app.all('/public/*', serveStatic({ root: './src' }));
 
-app.get('*', c => c.html('<h1>Page not found</h1>'));
+app.get('/', (c: Context) => c.redirect('/users'));
+app.route('/users', usersRouter);
 
 export default app;
