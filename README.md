@@ -1,7 +1,15 @@
 > ![image](https://github.com/sjdonado/nestjs-htmx-users-crud/assets/27580836/b8e25bfb-1dba-4dca-96b4-e3e049128a20)
 
 ## Benchmarks
-Output of `./benchmarks.sh`:
+Output of `./benchmarks.sh` (MacBook Air M2 8GB):
+```bash
+NUM_REQUESTS=1000
+CONCURRENCY=10
+# htmx endpoints only
+ENDPOINT_1="users/views/create"
+ENDPOINT_2="users/views/edit/10"
+ENDPOINT_3="users/views/cancel/edit/10"
+```
 ```bash
 Performance Comparison Report:
 -----------------------------
@@ -38,13 +46,14 @@ Winner: hono-bun-jsx
 -----------------------------
 ```
 
-## Demos
+## Up and running
+(a list of 300 items without lag, email inline validation, create user modal, edit rows, form validations, etc)
 
-(a list of 300 items without lag, email inline validation, create user modal, edit rows, form validations, and more)
+### Hono + Bun: https://hono-bun-htmx-users-crud.sjdonado.de
+<img width="1400" alt="image" src="https://github.com/sjdonado/nestjs-htmx-users-crud/assets/27580836/d135ff04-17bb-47f9-8cbf-858567117dc3">
 
-- Nest + SWC: https://nest-htmx-users-crud.sjdonado.de
-- Hono + Bun: https://hono-htmx-users-crud.sjdonado.de
+### Nest + SWC: https://nest-swc-htmx-users-crud.sjdonado.de
+<img width="1400" alt="image" src="https://github.com/sjdonado/nestjs-htmx-users-crud/assets/27580836/a437c66b-e455-4254-acde-0b5899a65127">
 
-<img width="1461" alt="image" src="https://github.com/sjdonado/nestjs-htmx-users-crud/assets/27580836/4bb26b07-7ea0-41c7-a6ad-04479a6ce5b0">
-
+---
 Inspiration: https://www.youtube.com/watch?v=3GObi93tjZI
