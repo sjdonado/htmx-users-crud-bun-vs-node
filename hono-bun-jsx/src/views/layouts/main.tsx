@@ -20,6 +20,7 @@ const MainLayout = (props: { children: HtmlEscapedString }) => {
       <body class="bg-gray-100 p-4" hx-boost="true" hx-ext="preload">
         <body>{props.children}</body>
         <script src="/public/interceptors/htmx-requests-interceptor.js"></script>
+        <script src="/public/interceptors/htmx-bad-request-alert.js"></script>
       </body>
     </html>
   );

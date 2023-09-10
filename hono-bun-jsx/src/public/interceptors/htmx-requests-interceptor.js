@@ -27,7 +27,8 @@ document.addEventListener('htmx:afterOnLoad', function (event) {
   const status = xhr.status;
   const url = xhr.responseURL;
 
-  const message = `${url} [${status}] completed in ${requestDuration}ms.`;
-
-  showInterceptorSnackbar(message);
+  if (status !== 400) {
+    const message = `${url} [${status}] completed in ${requestDuration}ms.`;
+    showInterceptorSnackbar(message);
+  }
 });
