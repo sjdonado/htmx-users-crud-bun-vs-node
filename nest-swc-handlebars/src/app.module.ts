@@ -2,7 +2,6 @@ import { Logger, Module, OnModuleInit } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { CacheModule, CacheInterceptor } from '@nestjs/cache-manager';
 
 import { EntityManager } from 'typeorm';
 
@@ -10,11 +9,9 @@ import { AppController } from './app.controller';
 
 import { UsersModule } from './users/users.module';
 import { SeedModule } from './seed/seed.module';
-import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
-    CacheModule.register(),
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -32,12 +29,6 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
     SeedModule,
   ],
   controllers: [AppController],
-  providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: CacheInterceptor,
-    },
-  ],
 })
 export class AppModule implements OnModuleInit {
   private readonly logger = new Logger(AppModule.name);

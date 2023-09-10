@@ -49,7 +49,7 @@ export class UsersController {
     return { user };
   }
 
-  @Get('views/edit/cancel/:id')
+  @Get('views/cancel/edit/:id')
   @Render('partials/_users-list-row')
   async cancelEditRow(@Param('id') id: string) {
     const user = await this.usersService.findOne(+id);

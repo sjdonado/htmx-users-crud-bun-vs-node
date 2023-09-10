@@ -12,5 +12,8 @@
       "decoratorMetadata": true
     }
   },
+  "compilerOptions": {
+    "baseUrl": "./src"
+  },
   "minify": true
 }
