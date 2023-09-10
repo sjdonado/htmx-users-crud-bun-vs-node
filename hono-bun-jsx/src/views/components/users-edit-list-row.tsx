@@ -46,7 +46,7 @@ const UsersEditListRow = (props: { user: User }) => {
           </button>
           <button
             class="text-blue-500 hover:text-blue-700 underline"
-            hx-get={`/users/views/edit/cancel/${props.user.id}`}
+            hx-get={`/users/views/cancel/edit/${props.user.id}`}
             hx-target={`#users-list-row-${props.user.id}`}
           >
             Cancel

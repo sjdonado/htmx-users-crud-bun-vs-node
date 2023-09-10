@@ -50,3 +50,7 @@ export const updateUser = async (userId: number, userPayload: InsertUser) => {
     );
   }
 };
+
+export const deleteUser = (userId: number) => {
+  return db.delete(usersTable).where(eq(usersTable.id, userId));
+};

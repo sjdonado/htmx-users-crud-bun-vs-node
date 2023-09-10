@@ -1,6 +1,12 @@
 import { type Context } from 'hono';
 
-import { createUser, findAllUsers, findUserById, updateUser } from '~/services/user';
+import {
+  createUser,
+  deleteUser,
+  findAllUsers,
+  findUserById,
+  updateUser,
+} from '~/services/user';
 
 import Users from '../views/pages/users';
 import UsersCreateModal from '~/views/components/users-create-modal';
@@ -24,9 +30,9 @@ export const create = async (c: Context) => {
   const user = await createUser(userPayload);
   logger.info(`User created: ${JSON.stringify(user, null, 2)}`);
 
-  c.header('HX-Trigger', 'close-create-user-modal');
-
-  return c.html(<UsersListRow user={user} />, 201);
+  return c.html(<UsersListRow user={user} />, 201, {
+    'HX-Trigger': 'close-create-user-modal',
+  });
 };
 
 export const patch = async (c: Context) => {
@@ -38,6 +44,14 @@ export const patch = async (c: Context) => {
   logger.info(`User updated: ${JSON.stringify(updatedUser, null, 2)}`);
 
   return c.html(<UsersListRow user={updatedUser} />);
+};
+
+export const remove = async (c: Context) => {
+  const userId = Number(c.req.param('id'));
+
+  await deleteUser(userId);
+
+  return c.text('', 204, { 'HX-Refresh': 'true' });
 };
 
 export const validationEmail = async (c: Context) => {
@@ -56,10 +70,18 @@ export const viewCreateUserModal = (c: Context) => {
   return c.html(<UsersCreateModal />);
 };
 
-export const viewEditUserListRow = async (c: Context) => {
+export const viewEditUsersListRow = async (c: Context) => {
   const userId = Number(c.req.param('id'));
 
   const user = await findUserById(userId);
 
   return c.html(<UsersEditListRow user={user} />);
+};
+
+export const viewUsersListRow = async (c: Context) => {
+  const userId = Number(c.req.param('id'));
+
+  const user = await findUserById(userId);
+
+  return c.html(<UsersListRow user={user} />);
 };
