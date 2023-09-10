@@ -29,4 +29,7 @@ app.onError((err, c) => {
   return c.json({ message }, statusCode);
 });
 
-export default app;
+export default {
+  port: Bun.env.PORT || 3000,
+  fetch: app.fetch,
+};

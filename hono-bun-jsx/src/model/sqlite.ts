@@ -10,7 +10,9 @@ const sqlite = new Database(Bun.env.DATABASE_PATH, { create: true });
 sqlite.query('PRAGMA journal_mode = WAL;').run();
 logger.info('Database connected in WAL mode');
 
-export const db: BunSQLiteDatabase = drizzle(sqlite, { logger: true });
+export const db: BunSQLiteDatabase = drizzle(sqlite, {
+  logger: Boolean(Bun.env.NODE_ENV === 'development'),
+});
 
 migrate(db, { migrationsFolder: './db/migrations' });
 
