@@ -52,5 +52,12 @@ export const updateUser = async (userId: number, userPayload: InsertUser) => {
 };
 
 export const deleteUser = (userId: number) => {
-  return db.delete(usersTable).where(eq(usersTable.id, userId));
+  try {
+    return db.delete(usersTable).where(eq(usersTable.id, userId));
+  } catch (error) {
+    throw new BadRequestError(
+      'There was an error deleting the user. Try again',
+      error as Error
+    );
+  }
 };
