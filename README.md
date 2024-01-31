@@ -49,10 +49,10 @@ Winner: hono-bun-jsx
 ## Up and running
 (a list of 300 items without lag, email inline validation, create user modal, edit rows, form validations, etc)
 
-### Hono + Bun: https://hono-bun-htmx-users-crud.sjdonado.de
+### Hono + Bun: https://hono-bun-htmx-users-crud.donado.co
 <img width="1400" alt="image" src="https://github.com/sjdonado/nestjs-htmx-users-crud/assets/27580836/d135ff04-17bb-47f9-8cbf-858567117dc3">
 
-### Nest + SWC: https://nest-swc-htmx-users-crud.sjdonado.de
+### Nest + SWC: https://nest-swc-htmx-users-crud.donado.co
 <img width="1400" alt="image" src="https://github.com/sjdonado/nestjs-htmx-users-crud/assets/27580836/a437c66b-e455-4254-acde-0b5899a65127">
 
 ---
